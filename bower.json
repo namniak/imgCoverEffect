@@ -1,4 +1,8 @@
 {
     "name": "imgCoverEffect",
-    "version": "0.1"
+    "version": "0.1",
+     "ignore": [
+        "bower.json",
+        "README.md"
+    ]
 }

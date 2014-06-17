@@ -16,7 +16,7 @@
  */
 
 var imgCoverEffect = function(image, align) {
-	'use strict';
+    'use strict';
 
     if (!(image instanceof HTMLImageElement)) {
         throw new Error('From imgCoverEffect(): Element passed as a parameter is not an instance of HTMLImageElement.');
@@ -68,7 +68,7 @@ var imgCoverEffect = function(image, align) {
             image.style.left = screenW - image.width + 'px';
         } else {
             throw new Error('From imgCoverEffect(): Unknown horizontal align value is used. ' +
-                'Property "x" can only be set to one of the following values: "left", "center", or "right".')
+                'Property "x" can only be set to one of the following values: "left", "center", or "right".');
         }
 
         // vertical align
@@ -80,7 +80,7 @@ var imgCoverEffect = function(image, align) {
             image.style.top = screenH - image.height + 'px';
         } else {
             throw new Error('From imgCoverEffect(): Unknown vertical align value is used. ' +
-                'Property "y" can only be set to one of the following values: "top", "middle", or "bottom".')
+                'Property "y" can only be set to one of the following values: "top", "middle", or "bottom".');
         }
     }
 
