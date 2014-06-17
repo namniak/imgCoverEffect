@@ -16,7 +16,7 @@
  */
 
 var imgCoverEffect = function(image, align) {
-	'use strict';
+    'use strict';
 
     if (!(image instanceof HTMLImageElement)) {
         throw new Error('From imgCoverEffect(): Element passed as a parameter is not an instance of HTMLImageElement.');
