@@ -8,7 +8,9 @@ Optionally, horizontal and vertical alignments can be set by passing an object *
 - x: 'left', 'center', 'right'
 - y: 'top', 'middle', 'bottom'
 
-##Version 0.1
+####Version 0.1
+
+==============
 
 ##USAGE
 ```
