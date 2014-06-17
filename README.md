@@ -12,8 +12,15 @@ Optionally, horizontal and vertical alignments can be set by passing an object *
 
 ==============
 
-##USAGE
+##Usage
 ```
 var image = document.createElement('img');
 imgCoverEffect(image, {x: 'center', y: 'middle'});
+```
+
+==============
+
+##Install
+```
+bower install imgCoverEffect
 ```
