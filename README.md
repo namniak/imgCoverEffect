@@ -1,4 +1,5 @@
 imgCoverEffect
+==============
 
 A JavaScript framework-independent solution for simulating CSS 'background-size: cover' effect on HTMLImageElement.
 
