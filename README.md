@@ -7,6 +7,7 @@ Optionally, horizontal and vertical alignments can be set by passing an object a
       x: 'left', 'center', 'right'
       y: 'top', 'middle', 'bottom'
 
-USAGE:
-      var image = document.createElement('img');
-      imgCoverEffect(image, {x:'center', y:'middle'});
+USAGE
+==============
+var image = document.createElement('img');
+imgCoverEffect(image, {x: 'center', y: 'middle'});
