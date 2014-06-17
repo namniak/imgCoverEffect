@@ -1,7 +1,7 @@
 imgCoverEffect
 ==============
 
-JavaScript framework-independent solution for simulating CSS 'background-size: cover' effect on HTMLImageElement (<img>).
+JavaScript framework-independent solution for simulating CSS 'background-size: cover' effect on HTMLImageElement.
 
 Optionally, horizontal and vertical alignments can be set by passing an object as the second parameter with the following available properties and values:
       x: 'left', 'center', 'right'
