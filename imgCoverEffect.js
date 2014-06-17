@@ -1,18 +1,10 @@
-/**
- * imgCoverEffect is a JavaScript framework-independent solution 
- * for simulating CSS 'background-size: cover' effect on HTMLImageElement (<img>).
+/*! imgCoverEffect
  *
- * Optionally, horizontal and vertical alignments can be set
- * by passing an object as the second parameter with the following available properties and values:
- *      x: 'left', 'center', 'right'
- *      y: 'top', 'middle', 'bottom'
- *
- * USAGE:
- *      var image = document.createElement('img');
- *      imgCoverEffect(image, {x:'center', y:'middle'});
- *
- * @version 0.1
- * @author Vadim Namniak
+ *  @license: n/a, free
+ *  @version: 0.1
+ *  @author   Vadim Namniak
+ *  @contact  vnamnyak@gmail.com
+ *  @github:  https://github.com/namniak/imgCoverEffect/edit/master/imgCoverEffect.js
  */
 
 var imgCoverEffect = function(image, align) {
