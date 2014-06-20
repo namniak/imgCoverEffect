@@ -37,6 +37,9 @@ function imgCoverEffect(image, opts) {
 
     // set events
     if (opts.listenToLoad === false) {
+        if (!image.naturalWidth || !image.naturalHeight) {
+            throw new Error('From imgCoverEffect(): Unable to detect image sizes because HTMLImageElement has not been loaded yet. Enable "listenToLoad" option or set an explicit "load" event listener on the image when calling this function.');
+        }
         resizeImg();
     } else {
         if (image.addEventListener) {
@@ -47,7 +50,7 @@ function imgCoverEffect(image, opts) {
     }
 
     function resizeImg() {
-        // set DOM resize watcher for parent element
+        // set DOM resize watcher on the parent element
         if (opts.watchResize !== false) {
             requestAnimationFrame(resizeImg);
         }
