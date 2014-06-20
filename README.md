@@ -1,32 +1,32 @@
-imgCoverEffect
-==============
+#imgCoverEffect
 
-A JavaScript framework-independent solution for simulating CSS 'background-size: cover' effect on HTMLImageElement.
+Pure JavaScript (framework-independent) solution for simulating CSS 'background-size: cover' effect on HTMLImageElement.
 
-##Syntax
+##Syntax:
 ```
 imgCoverEffect(HTMLImageElement [, options]);
 ```
-where options is an objects with the following available properties and values:
+Here the **options** is an extra object with the following available properties and values:
 ```
-- alignX: 'left' (default) || 'center' || 'right'   // horizontal align
-    
-- alignY: 'top'  (default) || 'middle' || 'bottom'  // vertical align
-    
-- listenToLoad: true (default) || false             // load event listener
-    
-- watchResize: true (default) || false              // 
+    alignX:      'left'(default) || 'center' || 'right'    // horizontal align (String)
+    alignY:      'top' (default) || 'middle' || 'bottom'   // vertical align   (String)
+    listenToLoad: true (default) || false                  // load event listener (Boolean)
+    watchResize:  true (default) || false                  // automatic watcher for DOM resize
 ```
+The function uncludes 'load' event listener by default, used for automatic aspect ratio detection.
+You can disable **listenToLoad** option if this function interferes with other 'on load' events binded with the HTMLImageElement.
 
-If no options object is passed, default values will apply.
+Also, **watchResize** option is turned on by default, which means the image will automatically adapt to fit its parent DOM element whenever its size changes. But if you intend to call *imgCoverEffect()* from within some rendering function, say, on 'resize' event, you need to disable this option to avoid multiple extra calls.
+
+If no **options** object is passed, default values will apply.
 
 ####Version: 0.1
 
 ==============
 
-##Usage:
+##Examples:
 ```
-1. With a newly created Image element
+1. Use with a newly created by Javascript Image element
 
 var img = new Image();
 img.src = 'pathToImg';
@@ -37,21 +37,21 @@ imgCoverEffect(img, {
   alignY: 'middle'
 });
 
-The above code will automatically listen to 'load' event and adapt image on DOM resize
 
-2. With existing image
+2. Use with already existing HTMLImageElement
 
-img = document.getElementById('imgID');
+var img = document.getElementById('imgID');
+
 imgCoverEffect(img, {
-  alignX: 'center',
-  alignY: 'middle'
-  listenToLoad: false,  // suppose the function is called on 'load' event explicitly
-  watchResize: true
+  alignX: 'right',
+  alignY: 'bottom'
+  listenToLoad: false,  // suppose the image element has an explicit 'load' event listener and our function is called on that event
+  watchResize: false    // suppose the function is called from within parent's size update function
 });
 
 ```
 
-##Install
+##Installation
 ```
 bower install imgCoverEffect
 ```
