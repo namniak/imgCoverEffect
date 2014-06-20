@@ -13,10 +13,10 @@ Here the **options** is an extra object with the following available properties 
     listenToLoad: true (default) ||  false                 // load event listener (Boolean)
     watchResize:  true (default) ||  false                 // automatic DOM resize watcher (Boolean)
 ```
-The function uncludes 'load' event listener by default, used for automatic aspect ratio detection.
-You can disable **listenToLoad** option if this function interferes with other 'on load' events binded with the HTMLImageElement.
+The function includes 'load' event listener by default, used for automatic aspect ratio detection.
+You can disable the **listenToLoad** option if this function interferes with other 'on load' events bound with the HTMLImageElement.
 
-Also, **watchResize** option is turned on by default, which means the image will automatically adapt to fit its parent DOM element whenever its size changes. But if you intend to call *imgCoverEffect()* from within some rendering function, say, on 'resize' event, you need to disable this option to avoid multiple extra calls.
+Also, **watchResize** option is turned on by default, which means the image will automatically adapt to fit its parent DOM element whenever its size changes. But if you intend to call *imgCoverEffect(...)* from within some rendering function, say, on 'resize' event, you need to disable this option to avoid multiple extra calls.
 
 If no **options** object is passed, default values will apply.
 
