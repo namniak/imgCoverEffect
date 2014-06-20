@@ -20,6 +20,10 @@ function imgCoverEffect(image, opts) {
         throw new Error('From imgCoverEffect(): "watchResize" property must be set to a Boolean if the option is specified.');
     }
 
+    if (!image.parentNode) {
+        throw new Error('From imgCoverEffect(): HTMLImageElement has not been appended to any element.');
+    }
+
     var parent = image.parentNode;
     var lastParentWidth = null;
     var lastParentHeight = null;
