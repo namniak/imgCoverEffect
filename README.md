@@ -10,8 +10,8 @@ Here the **options** is an extra object with the following available properties 
 ```
     alignX:      'left'(default) || 'center' || 'right'    // horizontal align (String)
     alignY:      'top' (default) || 'middle' || 'bottom'   // vertical align   (String)
-    listenToLoad: true (default) || false                  // load event listener (Boolean)
-    watchResize:  true (default) || false                  // automatic watcher for DOM resize
+    listenToLoad: true (default) ||  false                 // load event listener (Boolean)
+    watchResize:  true (default) ||  false                 // automatic watcher for DOM resize
 ```
 The function uncludes 'load' event listener by default, used for automatic aspect ratio detection.
 You can disable **listenToLoad** option if this function interferes with other 'on load' events binded with the HTMLImageElement.
@@ -27,7 +27,6 @@ If no **options** object is passed, default values will apply.
 ##Examples:
 ```
 1. Use with a newly created by Javascript Image element
-
 var img = new Image();
 img.src = 'pathToImg';
 document.body.appendChild(img);
@@ -39,7 +38,6 @@ imgCoverEffect(img, {
 
 
 2. Use with already existing HTMLImageElement
-
 var img = document.getElementById('imgID');
 
 imgCoverEffect(img, {
