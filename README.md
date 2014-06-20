@@ -25,7 +25,7 @@ If no **options** object is passed, default values will apply.
 ==============
 
 ##Examples:
-Use with a newly created by Javascript Image element
+Use with a newly created by Javascript Image element:
 
 ```
 var img = new Image();         // our future background image
@@ -38,7 +38,7 @@ imgCoverEffect(img, {
 });
 ```
 
-Use with already existing HTMLImageElement
+Use with already existing HTMLImageElement:
 
 ```
 var img = document.getElementById('imgID');
