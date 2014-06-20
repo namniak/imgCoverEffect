@@ -8,9 +8,9 @@ imgCoverEffect(HTMLImageElement [, options]);
 ```
 Here the **options** is an extra object with the following available properties and values:
 ```
-    alignX:      'left'(default) || 'center' || 'right'    // horizontal align (String)
-    alignY:      'top' (default) || 'middle' || 'bottom'   // vertical align   (String)
-    listenToLoad: true (default) ||  false                 // load event listener (Boolean)
+    alignX:      'left'(default) || 'center' || 'right'    // horizontal align             (String)
+    alignY:      'top' (default) || 'middle' || 'bottom'   // vertical align               (String)
+    listenToLoad: true (default) ||  false                 // load event listener          (Boolean)
     watchResize:  true (default) ||  false                 // automatic DOM resize watcher (Boolean)
 ```
 The function includes 'load' event listener by default, used for automatic aspect ratio detection.
