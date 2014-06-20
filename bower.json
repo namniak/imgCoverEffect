@@ -1,8 +1,12 @@
 {
     "name": "imgCoverEffect",
-    "version": "0.1",
-     "ignore": [
+    "version": "0.1.0",
+    "ignore": [
+        "**/.*",
+        "**/.log",
         "bower.json",
+        "node_modules",
         "README.md"
-    ]
+    ],
+    "homepage": "https://github.com/namniak/imgCoverEffect.git"
 }
