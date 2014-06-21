@@ -4,6 +4,7 @@
     "ignore": [
         "**/.*",
         "**/.log",
+        "**/.json",
         "bower.json",
         "node_modules",
         "README.md"
