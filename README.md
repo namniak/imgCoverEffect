@@ -17,6 +17,7 @@ The function includes a 'load' event listener by default, used for automatic asp
 You can disable the **listenToLoad** option if it interferes with other 'load' events bound with the HTMLImageElement.
 
 Also, **watchResize** option is turned on by default, which means the image will automatically adapt to fit its parent DOM element whenever its size changes. However, if you intend to call *imgCoverEffect(...)* from within some rendering function, say, on 'resize' event bound with the parent, you need to disable this option to avoid multiple extra calls.
+Here **'requestAnimationFrame polyfill'** is used. Check out its repository at https://gist.github.com/paulirish/1579671
 
 If no **options** object is passed, default values will apply.
 
