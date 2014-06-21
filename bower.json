@@ -2,9 +2,9 @@
     "name": "imgCoverEffect",
     "version": "0.1.0",
     "ignore": [
-        "**/.*",
-        "**/.log",
-        "**/.json",
+        "**/*.*",
+        "**/*.log",
+        "**/*.json",
         "bower.json",
         "node_modules",
         "README.md"
