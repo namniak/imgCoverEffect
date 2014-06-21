@@ -2,7 +2,7 @@
     "name": "imgCoverEffect",
     "version": "0.1.0",
     "ignore": [
-        "**/*.*",
+        "**/.*",
         "**/*.log",
         "**/*.json",
         "bower.json",
