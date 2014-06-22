@@ -21,9 +21,6 @@ Here **'requestAnimationFrame polyfill'** is used. Check out its repository at h
 
 If no **options** object is passed, default values will apply.
 
-####Version: 0.1.1
-
-==============
 
 ##Examples:
 Use with a newly created by Javascript Image element:
