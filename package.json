@@ -3,7 +3,6 @@
   "description": "Simulating CSS 'background-size: cover' effect on HTMLImageElement with DOM resize watcher",
   "version": "0.1.1",
   "license": "MIT",
-  "homepage": "https://github.com/namniak/imgCoverEffect",
   "main": "imgCoverEffect.min.js",
   "repository": {
     "type": "git",
