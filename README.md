@@ -2,27 +2,27 @@
 
 Pure JavaScript (framework-independent) solution for simulating CSS 'background-size: cover' effect on HTMLImageElement.
 
-##Syntax:
+##Syntax
 ```
 imgCoverEffect(HTMLImageElement [, options]);
 ```
-Here the **options** is an extra object with the following available properties and values:
+Here the ```options``` is an extra object with the following available properties and values:
 ```
-    alignX:      'left'(default) || 'center' || 'right'    // horizontal align
-    alignY:      'top' (default) || 'middle' || 'bottom'   // vertical align
-    listenToLoad: true (default) ||  false                 // load event listener
-    watchResize:  true (default) ||  false                 // automatic DOM resize watcher
+    alignX:      'left'(default) | 'center' | 'right'    // horizontal align
+    alignY:      'top' (default) | 'middle' | 'bottom'   // vertical align
+    listenToLoad: true (default) |  false                // load event listener
+    watchResize:  true (default) |  false                // automatic DOM resize watcher
 ```
 The function includes a 'load' event listener by default, used for automatic aspect ratio detection.
-You can disable the **listenToLoad** option if it interferes with other 'load' events bound with the HTMLImageElement.
+You can disable the ```listenToLoad``` option if it interferes with other 'load' events bound with the HTMLImageElement.
 
-Also, **watchResize** option is turned on by default, which means the image will automatically adapt to fit its parent DOM element whenever its size changes. However, if you intend to call *imgCoverEffect(...)* from within some rendering function, say, on 'resize' event bound with the parent, you need to disable this option to avoid multiple extra calls.
-Here **'requestAnimationFrame polyfill'** is used. Check out its repository at https://gist.github.com/paulirish/1579671
+Also, ```watchResize``` option is turned on by default, which means the image will automatically adapt to fit its parent DOM element whenever its size changes. However, if you intend to call ```imgCoverEffect(...)``` from within some rendering function, say, on 'resize' event bound with the parent, you need to disable this option to avoid multiple extra calls.
+Here ```requestAnimationFrame polyfill``` is used. Check out its repository at https://gist.github.com/paulirish/1579671
 
-If no **options** object is passed, default values will apply.
+If no ```options``` object is passed, default values will apply.
 
 
-##Examples:
+##Examples
 Use with a newly created by Javascript Image element:
 
 ```
@@ -36,7 +36,7 @@ imgCoverEffect(img, {
 });
 ```
 
-Use with already existing HTMLImageElement:
+Use with an already existing HTMLImageElement:
 
 ```
 var img = document.getElementById('imgID');
