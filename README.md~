@@ -8,10 +8,10 @@ imgCoverEffect(HTMLImageElement [, options]);
 ```
 Here the **options** is an extra object with the following available properties and values:
 ```
-    alignX:      'left'(default) || 'center' || 'right'    // horizontal align
-    alignY:      'top' (default) || 'middle' || 'bottom'   // vertical align
-    listenToLoad: true (default) ||  false                 // load event listener
-    watchResize:  true (default) ||  false                 // automatic DOM resize watcher
+    alignX:      'left'(default) || 'center' || 'right'    // horizontal align             (String)
+    alignY:      'top' (default) || 'middle' || 'bottom'   // vertical align               (String)
+    listenToLoad: true (default) ||  false                 // load event listener          (Boolean)
+    watchResize:  true (default) ||  false                 // automatic DOM resize watcher (Boolean)
 ```
 The function includes a 'load' event listener by default, used for automatic aspect ratio detection.
 You can disable the **listenToLoad** option if it interferes with other 'load' events bound with the HTMLImageElement.

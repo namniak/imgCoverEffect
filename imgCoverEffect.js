@@ -1,5 +1,5 @@
 /*! imgCoverEffect (https://github.com/namniak/imgCoverEffect)
- *  Version:  0.1
+ *  Version:  0.1.1
  *
  *  MIT License (http://www.opensource.org/licenses/mit-license.html)
  *  Copyright (c) 2014 Vadim Namniak
@@ -96,11 +96,11 @@ function imgCoverEffect(image, opts) {
             lastParentHeight = currParentHeight;
 
             // set horizontal align
-            if (opts.alignX === 'left' || !opts.alignX) {
+            if (String(opts.alignX).toLowerCase() === 'left' || !opts.alignX) {
                 image.style.left = 0;
-            } else if (opts.alignX === 'center') {
+            } else if (String(opts.alignX).toLowerCase() === 'center') {
                 image.style.left = (currParentWidth - image.width) / 2 + 'px';
-            } else if (opts.alignX === 'right') {
+            } else if (String(opts.alignX).toLowerCase() === 'right') {
                 image.style.left = currParentWidth - image.width + 'px';
             } else {
                 throw new Error('From imgCoverEffect(): Unsupported horizontal align value is used. ' +
@@ -108,17 +108,16 @@ function imgCoverEffect(image, opts) {
             }
 
             // set vertical align
-            if (opts.alignY === 'top' || !opts.alignY) {
+            if (String(opts.alignY).toLowerCase() === 'top' || !opts.alignY) {
                 image.style.top = 0;
-            } else if (opts.alignY === 'middle') {
+            } else if (String(opts.alignY).toLowerCase() === 'middle') {
                 image.style.top = (currParentHeight - image.height) / 2 + 'px';
-            } else if (opts.alignY === 'bottom') {
+            } else if (String(opts.alignY).toLowerCase() === 'bottom') {
                 image.style.top = currParentHeight - image.height + 'px';
             } else {
                 throw new Error('From imgCoverEffect(): Unsupported vertical align value is used. ' +
                     'Property "alignY" can only be set to one of the following values: "top", "middle", or "bottom".');
             }
-
         }
     }
 }
