@@ -51,6 +51,7 @@ function imgCoverEffect(image, opts) {
         } else if (image.attachEvent) {
             image.attachEvent('onload', resizeImg);
         }
+        if (image.naturalWidth && image.naturalHeight) { resizeImg(); }
     }
 
     function resizeImg() {
