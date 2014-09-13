@@ -1,6 +1,6 @@
 #imgCoverEffect
 
-Pure JavaScript (framework-independent) solution for simulating CSS 'background-size: cover' effect on HTMLImageElement.
+Pure JavaScript solution for simulating CSS 'background-size: cover' effect on HTMLImageElement with optional alignments and DOM resize watcher.
 
 ##Syntax
 ```
@@ -8,19 +8,17 @@ imgCoverEffect(HTMLImageElement [, options]);
 ```
 Here the ```options``` is an extra object with the following available properties and values:
 ```
-    alignX:      'left'(default) | 'center' | 'right'    // horizontal align
-    alignY:      'top' (default) | 'middle' | 'bottom'   // vertical align
-    listenToLoad: true (default) |  false                // load event listener
+    alignX:      'left'(default) | 'center' | 'right'    // horizontal alignment
+    alignY:      'top' (default) | 'middle' | 'bottom'   // vertical alignment
     watchResize:  true (default) |  false                // automatic DOM resize watcher
 ```
-The function includes a 'load' event listener by default, used for automatic aspect ratio detection.
-You can disable the ```listenToLoad``` option if it interferes with other 'load' events bound with the HTMLImageElement.
 
-Also, ```watchResize``` option is turned on by default, which means the image will automatically adapt to fit its parent DOM element whenever its size changes. However, if you intend to call ```imgCoverEffect(...)``` from within some rendering function, say, on 'resize' event bound with the parent, you need to disable this option to avoid multiple extra calls.
-Here ```requestAnimationFrame polyfill``` is used. Check out its repository at https://gist.github.com/paulirish/1579671
+```watchResize``` option is turned on by default, which means the image will automatically adapt to fit its parent DOM element whenever its size changes. It's done using ```requestAnimationFrame```.
 
-If no ```options``` object is passed, default values will apply.
+IMPORTANT: Make sure to disable the watcher when calling ```imgCoverEffect(...)``` from within parent's resize function to avoid multiple extra calls.
 
+##Browsers Support
+IE8+ and major browsers.
 
 ##Examples
 Use with a newly created by Javascript Image element:
@@ -44,8 +42,7 @@ var img = document.getElementById('imgID');
 imgCoverEffect(img, {
   alignX: 'right',
   alignY: 'bottom'
-  listenToLoad: false,  // suppose the image element has an explicit 'load' event listener and our function is called on that event
-  watchResize: false    // suppose the function is called from within parent's size update function
+  watchResize: false    // suppose the function explicitly called on parent resize 
 });
 
 ```
