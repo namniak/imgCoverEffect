@@ -50,6 +50,5 @@ imgCoverEffect(img, {
 ##Installation
 ```
 bower install imgCoverEffect
-
 npm install img-cover-effect
 ```
