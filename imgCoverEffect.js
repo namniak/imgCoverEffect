@@ -9,7 +9,7 @@ function imgCoverEffect(image,opts) {
     'use strict';
 
     // set default options
-    opts.watchResize = opts.watchResize || false;
+    opts.watchResize = (opts.watchResize !== false);
     opts.alignX = opts.alignX || 'left';
     opts.alignY = opts.alignY || 'top';
 
