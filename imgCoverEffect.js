@@ -1,35 +1,38 @@
 /*! imgCoverEffect (https://github.com/namniak/imgCoverEffect)
- *  Version:  0.1.1
+ *  Version:  0.2.0
  *
  *  MIT License (http://www.opensource.org/licenses/mit-license.html)
  *  Copyright (c) 2014 Vadim Namniak
  */
 
-function imgCoverEffect(image, opts) {
+function imgCoverEffect(image,opts) {
     'use strict';
+
+    // set default options
+    opts.watchResize = opts.watchResize || false;
+    opts.alignX = opts.alignX || 'left';
+    opts.alignY = opts.alignY || 'top';
 
     if (!(image instanceof HTMLImageElement)) {
         throw new Error('From imgCoverEffect(): Element passed as a parameter is not an instance of HTMLImageElement.');
     }
 
-    if (opts.listenToLoad && typeof opts.listenToLoad !== 'boolean') {
-        throw new Error('From imgCoverEffect(): "listenToLoad" property must be set to a Boolean if the option is specified.');
-    }
-
-    if (opts.watchResize && typeof opts.watchResize !== 'boolean') {
-        throw new Error('From imgCoverEffect(): "watchResize" property must be set to a Boolean if the option is specified.');
+    if (typeof opts.watchResize !== 'boolean') {
+        throw new Error('From imgCoverEffect(): "watchResize" property must be set to a Boolean when the option is specified.');
     }
 
     if (!image.parentNode) {
-        throw new Error('From imgCoverEffect(): HTMLImageElement has not been appended to any element.');
+        throw new Error('From imgCoverEffect(): passed HTMLImageElement has no parent DOM element.');
     }
 
     var parent = image.parentNode;
-    var lastParentWidth = null;
-    var lastParentHeight = null;
-    var currParentWidth = null;
-    var currParentHeight = null;
-    var aspectRatio = null;
+    var lastParentWidth = 0;
+    var lastParentHeight = 0;
+    var currParentWidth = 0;
+    var currParentHeight = 0;
+    var parentAspect = 0;
+    var imgAspect = 0;
+    var isIElt9 = (image.naturalWidth === undefined);  // detect IE<9 where naturalWidth/naturalHeight is unsupported
 
     // set default styles
     parent.style.overflow = 'hidden';
@@ -40,83 +43,66 @@ function imgCoverEffect(image, opts) {
     image.style.zIndex = -1;
 
     // set events
-    if (opts.listenToLoad === false) {
-        if (!image.naturalWidth || !image.naturalHeight) {
-            throw new Error('From imgCoverEffect(): Unable to detect image sizes because HTMLImageElement has not been loaded yet. Enable "listenToLoad" option or set an explicit "load" event listener on the image when calling this function.');
-        }
+    if ((!isIElt9 && image.naturalWidth && image.naturalHeight) || (isIElt9 && image.width && image.height)) {
         resizeImg();
     } else {
         if (image.addEventListener) {
-            image.addEventListener('load', resizeImg, false);
+            image.addEventListener('load',resizeImg,false);
         } else if (image.attachEvent) {
-            image.attachEvent('onload', resizeImg);
+            image.attachEvent('onload',resizeImg);
         }
-        if (image.naturalWidth && image.naturalHeight) { resizeImg(); }
     }
 
     function resizeImg() {
         // set DOM resize watcher on the parent element
-        if (opts.watchResize !== false) {
+        if (opts.watchResize === true) {
             requestAnimationFrame(resizeImg);
         }
 
-        if (!currParentWidth && !currParentHeight) {
-            // needs to fire once after the image is loaded
-            aspectRatio = image.naturalWidth / image.naturalHeight;
+        if (!imgAspect) {
+            imgAspect = (!isIElt9) ? (image.naturalWidth / image.naturalHeight) : (image.width / image.height);
         }
 
         currParentWidth = parent.clientWidth;
         currParentHeight = parent.clientHeight;
+        parentAspect = currParentWidth / currParentHeight;
 
         // check if parent was resized and the image needs to adjust
-        if (currParentWidth !== lastParentWidth || currParentHeight !== lastParentHeight) {
+        if ((currParentWidth !== lastParentWidth) || (currParentHeight !== lastParentHeight)) {
 
-            if (currParentWidth >= currParentHeight) {
+            // set image size
+            if (parentAspect >= imgAspect) {
                 image.width = currParentWidth;
-                image.height = image.width / aspectRatio;
-
-                // check how the new image height fits the parent element
-                if (image.height < currParentHeight) {
-                    // adjust sizes accordingly when the current image height is too small to cover its parent
-                    image.height = currParentHeight;
-                    image.width = image.height * aspectRatio;
-                }
+                image.height = image.width / imgAspect;
             } else {
+                image.width = currParentHeight * imgAspect;
                 image.height = currParentHeight;
-                image.width = image.height * aspectRatio;
-
-                // check how the new image width fits the parent element
-                if (image.width < currParentWidth) {
-                    // adjust sizes accordingly when the current image width is too small to cover its parent
-                    image.width = currParentWidth;
-                    image.height = image.width / aspectRatio;
-                }
             }
 
             lastParentWidth = currParentWidth;
             lastParentHeight = currParentHeight;
 
-            // set horizontal align
-            if (String(opts.alignX).toLowerCase() === 'left' || !opts.alignX) {
+            // set horizontal alignment
+            if (String(opts.alignX).toLowerCase() === 'left') {
                 image.style.left = 0;
             } else if (String(opts.alignX).toLowerCase() === 'center') {
                 image.style.left = (currParentWidth - image.width) / 2 + 'px';
             } else if (String(opts.alignX).toLowerCase() === 'right') {
                 image.style.left = currParentWidth - image.width + 'px';
             } else {
-                throw new Error('From imgCoverEffect(): Unsupported horizontal align value is used. ' +
+                throw new Error('From imgCoverEffect(): Unsupported horizontal align value. ' +
                     'Property "alignX" can only be set to one of the following values: "left", "center", or "right".');
             }
 
-            // set vertical align
-            if (String(opts.alignY).toLowerCase() === 'top' || !opts.alignY) {
+            // set vertical alignment
+            if (String(opts.alignY).toLowerCase() === 'top') {
                 image.style.top = 0;
             } else if (String(opts.alignY).toLowerCase() === 'middle') {
                 image.style.top = (currParentHeight - image.height) / 2 + 'px';
             } else if (String(opts.alignY).toLowerCase() === 'bottom') {
                 image.style.top = currParentHeight - image.height + 'px';
             } else {
-                throw new Error('From imgCoverEffect(): Unsupported vertical align value is used. ' +
+                throw new Error('From imgCoverEffect(): Unsupported vertical align value. ' +
                     'Property "alignY" can only be set to one of the following values: "top", "middle", or "bottom".');
             }
         }
@@ -124,13 +110,13 @@ function imgCoverEffect(image, opts) {
 }
 
 /*! requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
- https://gist.github.com/paulirish/1579671
- MIT license
+ *  https://gist.github.com/paulirish/1579671
+ *  MIT license
  */
 
 (function() {
     var lastTime = 0;
-    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    var vendors = ['ms','moz','webkit','o'];
     for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
         window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
         window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame']
@@ -138,9 +124,9 @@ function imgCoverEffect(image, opts) {
     }
 
     if (!window.requestAnimationFrame)
-        window.requestAnimationFrame = function(callback, element) {
+        window.requestAnimationFrame = function(callback,element) {
             var currTime = new Date().getTime();
-            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var timeToCall = Math.max(0,16 - (currTime - lastTime));
             var id = window.setTimeout(function() {
                     callback(currTime + timeToCall);
                 },

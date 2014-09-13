@@ -1,7 +1,7 @@
 {
   "name": "img-cover-effect",
-  "description": "Simulating CSS 'background-size: cover' effect on HTMLImageElement with DOM resize watcher",
-  "version": "0.1.1",
+  "description": "Simulating CSS 'background-size: cover' effect on HTMLImageElement with optional alignments & DOM resize watcher",
+  "version": "0.2.0",
   "license": "MIT",
   "main": "imgCoverEffect.min.js",
   "repository": {
@@ -11,5 +11,12 @@
   "author": "Vadim Namniak <vnamnyak@gmail.com> (https://github.com/namniak)",
   "bugs": {
     "url": "https://github.com/namniak/imgCoverEffect/issues"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-uglify": "^0.5.1",
+    "uglify-save-license": "^0.4.1"
   }
 }
