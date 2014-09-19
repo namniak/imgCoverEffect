@@ -1,6 +1,6 @@
 #imgCoverEffect
 
-Pure JavaScript solution for simulating CSS 'background-size: cover' effect on HTMLImageElement with optional alignments and DOM resize watcher.
+Pure JavaScript solution for simulating CSS 'background-size: cover' on HTMLImageElement with optional alignments and DOM resize watcher.
 
 ##Syntax
 ```
@@ -18,7 +18,7 @@ Here the ```options``` is an extra object with the following available propertie
 IMPORTANT: Make sure to disable the watcher when calling ```imgCoverEffect(...)``` from within parent's resize function to avoid multiple extra calls.
 
 ##Browsers Support
-IE8+ and major browsers.
+IE7+ and major browsers.
 
 ##Examples
 Use with a newly created by Javascript Image element:
