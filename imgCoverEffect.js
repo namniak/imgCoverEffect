@@ -1,5 +1,5 @@
 /*! imgCoverEffect (https://github.com/namniak/imgCoverEffect)
- *  Version:  0.2.0
+ *  Version:  0.2.1
  *
  *  MIT License (http://www.opensource.org/licenses/mit-license.html)
  *  Copyright (c) 2014 Vadim Namniak
@@ -13,9 +13,9 @@ function imgCoverEffect(image,opts) {
     opts.alignX = opts.alignX || 'left';
     opts.alignY = opts.alignY || 'top';
 
-    if (!(image instanceof HTMLImageElement)) {
+    /*if (!(image instanceof HTMLImageElement)) {
         throw new Error('From imgCoverEffect(): Element passed as a parameter is not an instance of HTMLImageElement.');
-    }
+    }*/
 
     if (typeof opts.watchResize !== 'boolean') {
         throw new Error('From imgCoverEffect(): "watchResize" property must be set to a Boolean when the option is specified.');

@@ -1,7 +1,7 @@
 {
   "name": "img-cover-effect",
-  "description": "Simulating CSS 'background-size: cover' effect on HTMLImageElement with optional alignments & DOM resize watcher",
-  "version": "0.2.0",
+  "description": "Simulating CSS 'background-size: cover' on HTMLImageElement with optional alignments & DOM resize watcher",
+  "version": "0.2.1",
   "license": "MIT",
   "main": "imgCoverEffect.min.js",
   "repository": {
