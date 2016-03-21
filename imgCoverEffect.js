@@ -12,6 +12,7 @@ function imgCoverEffect(image,opts) {
     opts.watchResize = (opts.watchResize !== false);
     opts.alignX = opts.alignX || 'left';
     opts.alignY = opts.alignY || 'top';
+    opts.alignZ = opts.alignZ || -1;
 
     /*if (!(image instanceof HTMLImageElement)) {
         throw new Error('From imgCoverEffect(): Element passed as a parameter is not an instance of HTMLImageElement.');
@@ -104,6 +105,14 @@ function imgCoverEffect(image,opts) {
             } else {
                 throw new Error('From imgCoverEffect(): Unsupported vertical align value. ' +
                     'Property "alignY" can only be set to one of the following values: "top", "middle", or "bottom".');
+            }
+
+            // set z-index
+            if(Number(opts.alignZ)){
+                image.style.zIndex = opts.alignZ;
+            } else {
+                throw new Error('From imgCoverEffect(): Unsupported z-index value. ' +
+                    'Property "z-index" must be a number.');
             }
         }
     }
